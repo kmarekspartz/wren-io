@@ -44,7 +44,7 @@ debug: prep wren-debug wrend-io
 
 # Debug command-line interpreter.
 wrend-io: build/debug/main.o
-	$(CC) $(CFLAGS) $(DEBUG_CFLAGS) -Iinclude -o wrend-io $^ -lm
+	$(CC) $(CFLAGS) $(DEBUG_CFLAGS) -Iinclude -o wrend-io $^ -lm -lwrend -L$(WREN_DIR)
 
 # Debug object files.
 build/debug/%.o: src/%.c $(HEADERS)
@@ -55,7 +55,7 @@ release: prep wren-io
 
 # Release command-line interpreter.
 wren-io: build/release/main.o
-	$(CC) $(CFLAGS) $(RELEASE_CFLAGS) -Iinclude -o wren-io $^ -lm
+	$(CC) $(CFLAGS) $(RELEASE_CFLAGS) -Iinclude -o wren-io $^ -lm -lwren -L$(WREN_DIR)
 
 # Release object files.
 build/release/%.o: src/%.c $(HEADERS)
