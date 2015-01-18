@@ -10,7 +10,7 @@ SOURCES = $(wildcard src/*.c)
 HEADERS = $(wildcard src/*.h) $(WREN_DIR)/include/wren.h
 OBJECTS = $(SOURCES:.c=.o)
 
-.PHONY: all wren wren-clean wren-debug clean debug test docs watchdocs prep
+.PHONY: all wren wren-clean wren-debug clean debug test docs watchdocs prep c-wren
 
 all: release
 
@@ -39,8 +39,11 @@ watchdocs:
 prep:
 	@mkdir -p build/debug build/release
 
+c-wren:
+	@./script/generate_c_wren.py
+
 # Debug build.
-debug: prep wren-debug wrend-io
+debug: c-wren prep wren-debug wrend-io
 
 # Debug command-line interpreter.
 wrend-io: build/debug/main.o
@@ -51,7 +54,7 @@ build/debug/%.o: src/%.c $(HEADERS)
 	$(CC) -c -fPIC $(CFLAGS) $(DEBUG_CFLAGS) -Iinclude -o $@ $<
 
 # Release build.
-release: prep wren-io
+release: c-wren prep wren-io
 
 # Release command-line interpreter.
 wren-io: build/release/main.o

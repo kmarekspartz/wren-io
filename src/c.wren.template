@@ -1,0 +1,14 @@
+#include "wren_io.h"
+
+#if WREN_IO_USE_LIB_{libname}
+
+// This string literal is generated automatically from {basename}. Do not edit.
+static const char* libSource =
+{source};
+
+void wrenLoad{name}Library(WrenVM* vm)
+{{
+  wrenInterpret(vm, "", libSource);
+}}
+
+#endif
