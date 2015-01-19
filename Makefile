@@ -2,7 +2,7 @@ WREN_DIR = ../wren
 
 # Compiler flags.
 CFLAGS = -std=c99 -Wall -Werror -Wextra
-DEBUG_CFLAGS = -O0 -DDEBUG -g
+DEBUG_CFLAGS = -O0 -DDEBUG -g -v
 RELEASE_CFLAGS = -Os
 
 # Files.

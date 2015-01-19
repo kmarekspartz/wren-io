@@ -5,6 +5,7 @@
 #include <string.h>
 
 #include "../../wren/include/wren.h"
+#include "wren_io_loader.h"
 
 #define MAX_LINE_LENGTH 1024 // TODO: Something less arbitrary.
 
@@ -118,6 +119,7 @@ int main(int argc, const char* argv[])
   config.heapGrowthPercent = 0;
 
   WrenVM* vm = wrenNewVM(&config);
+  wrenIOLoadIncluded(vm);
 
   if (argc == 1) return runRepl(vm);
   if (argc == 2) return runFile(vm, argv[1]);

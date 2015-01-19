@@ -1,12 +1,12 @@
-#include "wren_io.h"
+// This file is generated automatically from {basename}. Do not edit.
+#include "wren_io_{name}.h"
 
 #if WREN_IO_USE_LIB_{libname}
 
-// This string literal is generated automatically from {basename}. Do not edit.
 static const char* libSource =
 {source};
 
-void wrenLoad{name}Library(WrenVM* vm)
+void wrenLoad{camelname}Library(WrenVM* vm)
 {{
   wrenInterpret(vm, "", libSource);
 }}
