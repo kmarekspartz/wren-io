@@ -1,0 +1,7 @@
+// This file is generated automatically. Do not edit.
+
+{loader_includes}
+void wrenIOLoadIncluded(WrenVM* vm)
+{{
+{loaders}
+}}

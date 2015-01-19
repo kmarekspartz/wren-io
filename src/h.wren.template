@@ -1,0 +1,13 @@
+// This file is generated automatically from {basename}. Do not edit.
+#ifndef wren_io_{name}_h
+#define wren_io_{name}_h
+
+#include "../../wren/include/wren.h"
+
+#if WREN_USE_LIB_{libname}
+
+void wrenLoad{camelname}Library(WrenVM* vm);
+
+#endif
+
+#endif
