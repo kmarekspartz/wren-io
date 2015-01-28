@@ -1,4 +1,5 @@
 // This file is generated automatically. Do not edit.
+#include <wren.h>
 
 {loader_includes}
 void wrenIOLoadIncluded(WrenVM* vm)

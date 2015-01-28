@@ -5,6 +5,8 @@ import os.path
 import re
 import string
 
+print("c-wren generating:")
+
 PATTERN = re.compile(r'libSource =\n("(.|[\n])*?);')
 
 loaders = ""
@@ -16,8 +18,11 @@ with open("src/c.wren.template", "r") as f:
 with open("src/h.wren.template", "r") as f:
   h_template = f.read()
 
-with open("src/loader.wren.template", "r") as f:
+with open("src/loader.c.template", "r") as f:
   loader_template = f.read()
+
+with open("src/loader.h.template", "r") as f:
+  loader_h_template = f.read()
 
 with open("src/loader_include_item.wren.template", "r") as f:
   loader_include_item_template = f.read()
@@ -66,6 +71,7 @@ def build_c_wren_file(filename):
   c_filename = "src/wren_io_" + name + ".c"
   c_basename = os.path.basename(c_filename)
   h_filename = "src/wren_io_" + name + ".h"
+  h_basename = os.path.basename(h_filename)
 
   with open(c_filename, "w") as f:
     f.write(c_source)
@@ -82,14 +88,23 @@ def build_c_wren_file(filename):
     camelname=camelname
   )
 
-  print(basename + " generated " + c_basename)
-
+  print("- " + c_basename)
+  print("- " + h_basename)
 
 for f in glob.iglob("src/*.c.wren"):
   build_c_wren_file(f)
+
 loader_source = loader_template.format(
   loader_includes=loader_includes,
   loaders=loaders
 )
+
 with open("src/wren_io_loader.c", "w") as f:
   f.write(loader_source)
+
+print("- wren_io_loader.c")
+
+with open("src/wren_io_loader.h", "w") as f:
+  f.write(loader_h_template)
+
+print("- wren_io_loader.h")

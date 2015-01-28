@@ -28,3 +28,8 @@
 *.x86_64
 *.hex
 wren-io
+deps
+src/wren_io_*.*
+build
+include
+lib

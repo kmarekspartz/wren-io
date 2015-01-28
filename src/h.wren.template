@@ -2,12 +2,8 @@
 #ifndef wren_io_{name}_h
 #define wren_io_{name}_h
 
-#include "../../wren/include/wren.h"
-
-#if WREN_USE_LIB_{libname}
+#include <wren.h>
 
 void wrenLoad{camelname}Library(WrenVM* vm);
-
-#endif
 
 #endif

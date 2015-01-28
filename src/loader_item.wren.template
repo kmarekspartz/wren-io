@@ -1,3 +1,1 @@
-  #if WREN_USE_LIB_{libname}
-    wrenLoad{camelname}Library(vm);
-  #endif
+  wrenLoad{camelname}Library(vm);

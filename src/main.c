@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../../wren/include/wren.h"
+#include <wren.h>
+
 #include "wren_io_loader.h"
 
 #define MAX_LINE_LENGTH 1024 // TODO: Something less arbitrary.

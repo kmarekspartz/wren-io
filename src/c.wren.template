@@ -1,4 +1,5 @@
 // This file is generated automatically from {basename}. Do not edit.
+#include <wren.h>
 #include "wren_io_{name}.h"
 
 #if WREN_IO_USE_LIB_{libname}

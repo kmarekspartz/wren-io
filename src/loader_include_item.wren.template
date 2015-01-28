@@ -1,3 +1,1 @@
-#if WREN_USE_LIB_{libname}
-  #include "wren_io_{name}.h"
-#endif
+#include "wren_io_{name}.h"
