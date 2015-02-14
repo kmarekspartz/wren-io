@@ -4,16 +4,18 @@ class Set {
     _clean = true
   }
 
-  new (list) {
+  new(list) {
+    // TODO: Handle non-List arguments?
     if (list is List) {
       _list = list
       _clean = false
       cleanup
-    } // raise error?
+    }
   }
 
+  // Removes duplicates in the underlying list.
+  // *PRIVATE*
   cleanup {
-    // Removes duplicates in the underlying list.
     if (!_clean) {
       var newList = []
       for (element in _list) {
@@ -71,33 +73,27 @@ class Set {
     return new Set(_list.where(f))
   }
 
-  |(that) {
-    // Union
+  union(that) {
     return new Set(_list + that)
   }
 
-  +(that) {
-    // A synonym for |
-    return this | that
+  |(that) { union(that) }
+
+  +(that) { union(that) }
+
+  intersection(that) {
+    return where { |element|
+      return that.contains(element)
+    } + that.where { |element|
+      return contains(element)
+    }
   }
 
-  &(that) {
-    // Intersection
-    return new Set(
-      _list.where { |element|
-        return that.contains(element)
-      } + that.where { |element|
-        return _list.contains(element)
-      })
-  }
+  &(that) { intersection(that) }
 
-  -(that) {
-    // Set minus
-    return new Set(
-      _list.where { |element|
-          return !that.contains(element)
-      })
-  }
+  minus(that) { where { |element| !that.contains(element) } }
+
+  -(that) { minus(that) }
 }
 
 var a = "a"
@@ -106,5 +102,4 @@ var as = new Set([a, a, a])
 var b = "b"
 var bs = new Set([b, b, b])
 
-IO.write((as | bs).contains(b))
-IO.write((as & bs).contains(a))
+if ((as | bs).contains(b) == true && (as & bs).contains(a) == false)) IO.write("All tests passed!")
