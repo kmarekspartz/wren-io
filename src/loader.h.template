@@ -1,8 +1,4 @@
-#ifndef wren_io_loader_h
-#define wren_io_loader_h
-
+#pragma once
 #include <wren.h>
 
 void wrenIOLoadIncluded(WrenVM* vm);
-
-#endif
